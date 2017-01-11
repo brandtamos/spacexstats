@@ -1,0 +1,142 @@
+// Resets, dependencies, etc
+@import "reset";
+@import "gridle/grid";
+@import "dropzone/dropzone";
+@import 'fontawesome/font-awesome';
+
+/* --------------- COLOR SWATCHES ----------------- */
+$slateblack:    #181c1f;
+$lightblack:	#21272B;
+$grey: 			#8B939B;
+$bordergrey: 	#CCC;
+
+$blue:			#3569A4;
+$october:       #4f708f;
+
+$gold:          rgb(204, 172, 85);
+
+$offwhite:      #F2F2F2;
+$white:			#FAFAFA;
+
+$green:         #40C085;
+$spacesuitgreen:#1FA67A;
+$red:           #FB6473;
+
+/* --------------- FONT VARIABLES ----------------- */
+@font-face {
+    font-family: 'Brandon Grotesque-webfont';
+    src: url('../fonts/brandon_bld-webfont.eot');
+    src: url('../fonts/brandon_bld-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/brandon_bld-webfont.woff2') format('woff2'),
+    url('../fonts/brandon_bld-webfont.woff') format('woff'),
+    url('../fonts/brandon_bld-webfont.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque-webfont';
+    src: url('../fonts/brandon_med-webfont.eot');
+    src: url('../fonts/brandon_med-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/brandon_med-webfont.woff2') format('woff2'),
+    url('../fonts/brandon_med-webfont.woff') format('woff'),
+    url('../fonts/brandon_med-webfont.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque-webfont';
+    src: url('../fonts/brandon_reg-webfont.eot');
+    src: url('../fonts/brandon_reg-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/brandon_reg-webfont.woff2') format('woff2'),
+    url('../fonts/brandon_reg-webfont.woff') format('woff'),
+    url('../fonts/brandon_reg-webfont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque-webfont';
+    src: url('../fonts/brandon_thin-webfont.eot');
+    src: url('../fonts/brandon_thin-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/brandon_thin-webfont.woff2') format('woff2'),
+    url('../fonts/brandon_thin-webfont.woff') format('woff'),
+    url('../fonts/brandon_thin-webfont.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+/* --------------- FONT VARIABLES ----------------- */
+$brandonGrotesque: "Brandon Grotesque", "Brandon Grotesque-webfont"; // Headings, stylish text
+$notoSans: "Noto Sans", sans-serif; // General text
+$segoeWP: "Segoe WP", sans-serif; // Labels, small markings
+$sourceCodePro: "Source Code Pro"; // Code
+$montserrat:  "Montserrat", sans-serif;
+
+$font-large:18px;
+$font-medium:14px;
+$font-small:12px;
+
+$content-large:18px;
+
+/* ------------------- DESIGN --------------------- */
+$border-radius-small:3px;
+$border-radius-large:8px;
+
+$h1-height: 150px;
+$h1-height-small: 50px;
+
+/* ------------------ GENERAL MIXINS ----------------- */
+@mixin transition($property) {
+    transition:$property;
+}
+@mixin transitionFast($properties, $delay: "0s") {
+    $transitions: ();
+
+    @each $property in $properties {
+        $trans: unquote("#{$property} ease-in-out 0.3s #{$delay}");
+        $transitions: append($transitions, $trans, comma );
+    }
+
+    @include transition(#{$transitions});
+}
+
+@mixin transitionMed($properties, $delay: "0s") {
+    $transitions: ();
+
+    @each $property in $properties {
+        $trans: unquote("#{$property} ease-in-out 0.5s #{$delay}");
+        $transitions: append($transitions, $trans, comma );
+    }
+
+    @include transition(#{$transitions});
+}
+
+@mixin transitionSlow($properties, $delay: "0s") {
+    $transitions: ();
+
+    @each $property in $properties {
+        $trans: unquote("#{$property} ease-in-out 1s #{$delay}");
+        $transitions: append($transitions, $trans, comma );
+    }
+
+    @include transition(#{$transitions});
+}
+
+@mixin transform($transformation) {
+    transform:$transformation;
+}
+
+@mixin insetBoxShadow($color) {
+    box-shadow:0px 10px 10px -10px $color inset, 0px -10px 10px -10px $color inset;
+}
+
+@mixin filteredBackground($backgroundImage) {
+    background-image: url($backgroundImage);
+    //background-image: linear-gradient(rgba(#33495E, 0.5), rgba($slateblack, 0.5)), url($backgroundImage);
+    //-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#BF21272B', endColorstr='#BF21272B', gradientType='0')";
+}
+
+@mixin lowVisibility($type) {
+}

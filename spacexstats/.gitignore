@@ -1,0 +1,27 @@
+# L4 holdover?
+/bootstrap/compiled.php
+
+# L5 recommended
+/vendor
+/node_modules
+.env
+
+#frontend app stuff
+/resources/assets/development
+/public/media
+/.sass-cache
+
+# Mac and PHPStorm stuff
+composer.phar
+.env.*.php
+.DS_Store
+Thumbs.db
+test.log
+*.sublime-project
+*.sublime-workspace
+/.idea
+_ide_helper.php
+
+/.vagrant
+worker.log
+npm-debug.log

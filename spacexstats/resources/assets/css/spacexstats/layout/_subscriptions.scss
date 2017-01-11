@@ -1,0 +1,102 @@
+$planHeight:450px;
+$planWidth:350px;
+
+.subscribe {
+    text-align:center;
+    font-size:0;
+
+    .plan {
+        display:inline-block;
+        border-radius:$border-radius-small;
+        vertical-align: middle;
+        padding:0 20px;
+        margin: 20px 0;
+
+		&.free {
+            background-color:$october;
+			width:($planWidth / 6) * 5;
+			height:($planHeight / 6) * 5;
+            border-bottom-right-radius:0;
+            border-top-right-radius:0;
+            box-shadow:-10px 0 10px -10px $lightblack inset
+		}
+
+		&.subscription {
+			width:$planWidth;
+			height:$planHeight;
+
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#51a4f7+0,3569a4+100 */
+            background: $blue; /* Old browsers */
+            background: -moz-linear-gradient(-45deg,  #51a4f7 0%, #3569a4 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(-45deg,  #51a4f7 0%,#3569a4 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(135deg,  #51a4f7 0%,#3569a4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#51a4f7', endColorstr='#3569a4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+            .features ul {
+                list-style-position: inside;
+
+                li {
+                    list-style-type: disc;
+                    text-align: left;
+                }
+            }
+		}
+
+	}
+
+    h2 {
+        color:$white;
+        border-bottom:1px solid rgba($white, 0.5);
+        margin:10px 0;
+        padding-bottom:10px;
+        font-size:24px;
+    }
+
+    p, ul li {
+        font-size:18px;
+    }
+}
+
+form[name="subscribeForm"] {
+
+    .payment-options {
+        width:200px;
+    }
+
+    label {
+        float: left;
+    }
+
+    input {
+        border-radius: $border-radius-small;
+        border:1px solid $blue;
+        background-color:rgba($white, 0.25);
+        width:100%;
+        color:$white;
+    }
+
+    li[cc-exp] {
+        padding:10px 0;
+
+        input {
+            width:50%;
+            @include gridle_gutter(0 10px);
+
+            &:first-of-type {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                border-right:none;
+            }
+
+            &:last-of-type {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                border-left:none;
+            }
+        }
+    }
+
+    .subscription-failed {
+        color:$red;
+    }
+}

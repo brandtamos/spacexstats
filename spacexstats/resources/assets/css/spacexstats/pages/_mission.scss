@@ -1,0 +1,263 @@
+$launch-date-time-width: 300px;
+$mission-link-width: 150px;
+
+.mission-link {
+    display:inline-block;
+    overflow:hidden;
+    font-family:$montserrat;
+    line-height: 40px;
+    height: 40px;
+
+    &.future-mission-link {
+        float:right;
+        text-align:right;
+
+        &:hover {
+            .placeholder {
+                transform:translateX($mission-link-width);
+                opacity:0;
+            }
+
+            .link {
+                transform:translateX($mission-link-width);
+                opacity:1;
+            }
+        }
+    }
+
+    &.past-mission-link {
+        &:hover {
+            .placeholder {
+                transform:translateX(-$mission-link-width);
+                opacity:0;
+            }
+
+            .link {
+                transform:translateX(-$mission-link-width);
+                opacity:1;
+            }
+        }
+    }
+
+    .placeholder {
+        text-transform:uppercase;
+        display:inline-block;
+        width:$mission-link-width;
+        opacity:1;
+        @include transitionFast(all);
+    }
+
+    .link {
+        opacity: 0;
+        display:inline-block;
+        @include transitionFast(all);
+    }
+}
+
+.mission-status-outcomes {
+    float:right;
+
+    @include gridle_state('small') {
+        display:inline-block !important;
+        @include gridle_grid(6);
+    }
+}
+
+.outcome, .status {
+    border-radius:$border-radius-small;
+    font-family:$montserrat;
+    color:$white;
+    padding:3px 5px;
+
+    &.complete {
+        background-color:$gold;
+    }
+
+    &.in-progress {
+        background-color:$gold;
+    }
+
+    &.upcoming {
+        background-color:$grey;
+    }
+
+    &.success {
+        background-color:$green;
+    }
+
+    &.failure {
+        background-color:$red;
+    }
+}
+
+.display-date-time {
+    position:absolute;
+    right:0;
+    top:40px;
+    width:$launch-date-time-width;
+    font-family:$montserrat;
+    cursor:pointer;
+
+    .launch {
+        display:inline-block;
+        text-align:right;
+        background-color:$gold;
+        color:$white;
+        height:40px;
+        width:calc(100% - 20px);
+        padding:0 20px 0 10px;
+        position:relative;
+        right:-30px;
+
+        p {
+            line-height:20px;
+            font-family:$montserrat;
+            color:$white;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            top: 0;
+            left: -30px;
+            border-right: 30px solid $gold;
+            border-bottom: 40px solid transparent;
+            z-index: -1;
+        }
+
+        &:after {
+            width: 0px;
+            height: 0px;
+            border-right:10px solid transparent;
+            border-top:10px solid darken($gold, 30%);
+            display: block;
+            top: 40px;
+            right:0;
+            position: absolute;
+            content: "";
+        }
+
+        .alert-not-exact {
+            color:$red;
+            padding:0 5px;
+        }
+    }
+
+    .timezone-clip {
+        overflow:hidden;
+    }
+
+    .timezone-list {
+        box-shadow:0px 10px 10px -10px rgba($lightblack, 0.5) inset;
+        background-color:darken($gold, 15%);
+        line-height:30px;
+        color:$white;
+        transform:translateY(0);
+        z-index:1000;
+        @include transitionMed(transform);
+
+        &.ng-hide {
+            transform:translateY(-120px);
+        }
+    }
+
+    .timezone-option {
+        font-size:14px;
+        text-transform: uppercase;
+        text-align:center;
+        padding:0;
+        cursor:pointer;
+        @include transitionFast(background-color);
+
+        &:hover {
+            background-color:darken($gold, 10%);
+        }
+
+        &.active {
+            background-color:darken($gold, 5%);
+        }
+    }
+}
+
+article {
+    .md blockquote, .md blockquote > * {
+        font-style:italic;
+        font-size:24px;
+    }
+}
+
+#countdown > * {
+    top:-10%;
+}
+
+section.details {
+    @include gridle_container();
+
+    #live-tweets {
+        @include gridle(4);
+    }
+
+    #mission-details {
+
+    }
+}
+
+div.square {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius:$border-radius-large;
+    background-color:$grey;
+    text-align: center;
+    margin: 10px;
+
+    img {
+        min-height: 100%;
+        min-width: 100%;
+        width: auto;
+        height: auto;
+        display: block;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+    }
+}
+
+// Radial progress bars
+.progress-radial {
+    float: left;
+    margin-right: 30px;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid $lightblack;
+    background-color: $green;
+
+    $step: 5; // step of % for created classes
+
+    $loops: round(100 / $step);
+    $increment: 360 / $loops;
+    $half: round($loops / 2);
+
+    @for $i from 0 through $loops {
+        [data-progress="#{$i*$step}"] {
+
+            @if $i < $half {
+                $nextdeg: 90deg + ( $increment * $i );
+                background-image: linear-gradient(90deg, green 50%, transparent 50%, transparent), linear-gradient($nextdeg, blue 50%, blue 50%, blue);
+
+            } @else {
+                $nextdeg: -90deg + ( $increment * ( $i - $half ) );
+                background-image: linear-gradient($nextdeg, green 50%, transparent 50%, transparent), linear-gradient(270deg, blue 50%, blue 50%, blue);
+            }
+        }
+
+    }
+}

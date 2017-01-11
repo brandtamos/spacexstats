@@ -1,0 +1,28 @@
+<table class="datetime">
+    <tr>
+        <td>
+            <label>Date</label> <i class="fa fa-info-circle" title="If you don't know the day or the month, leave them blank"></i>
+        </td>
+        <td ng-if="type == 'datetime' && dateIsComplete()" colspan="2">
+            <label>Time (UTC)</label> <i class="fa fa-info-circle" title="If you don't know the time, ignore it"></i>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <select ng-model="date" ng-options="day.value as day.display for day in days" ng-disabled="isNull || disabled">
+            </select>
+            <select ng-model="month" ng-options="month.value as month.display for month in months" ng-disabled="isNull || disabled">
+            </select>
+            <select ng-model="year" ng-options="year for year in years()" ng-disabled="isNull || disabled">
+            </select>
+        </td>
+        <td ng-if="type == 'datetime' && dateIsComplete()">
+            <input type="number" min="0" max="23" ng-model="$parent.hour" ng-disabled="isNull || disabled" />
+            <span class="time-separator">:</span>
+            <input type="number" min="0" max="59" ng-model="$parent.minute" ng-disabled="isNull || disabled" />
+            <span class="time-separator">:</span>
+            <input type="number" min="0" max="59" ng-model="$parent.second" ng-disabled="isNull || disabled" />
+        </td>
+    </tr>
+</table>
+<span ng-show="isNull">No date selected.</span>

@@ -1,0 +1,68 @@
+// Import gridle
+@import 'gridle/gridle';
+
+// setup the grid (required)
+@include gridle_setup((
+        context : 12,
+        gutter-width : 0px,
+        states-classes : true
+));
+
+
+// register special columns
+@include gridle_register_column("1on5", 1, 5);
+@include gridle_register_column("1on8", 1, 8);
+@include gridle_register_column("1on9", 1, 9);
+
+
+// clear each classes
+@include gridle_register_clear_each(2, left);
+@include gridle_register_clear_each(3, left);
+@include gridle_register_clear_each(12, both);
+
+// register states
+//@include gridle_register_default_states();
+@include gridle_register_state(small, (
+        query : "(max-width: 640px)",
+        gutter-width : 0
+));
+@include gridle_register_state(medium, (
+        query : "(min-width: 641px) and (max-width: 1024px)",
+        gutter-width : 0
+));
+@include gridle_register_state(large, (
+        query : "(min-width: 1025px) and (max-width: 1440px)",
+        gutter-width : 0
+));
+@include gridle_register_state(xlarge, (
+        query : "(min-width: 1441px) and (max-width: 1920px)",
+        gutter-width : 0
+));
+@include gridle_register_state(xxlarge, (
+        query : "(min-width: 1921px)",
+        gutter-width : 0
+));
+
+// you can set css to be applied on the desired element type (grid here)
+// for each of the specified states (default mobile and tablet)
+// this mean that even the grid-tablet-1 will have this css applied
+// in the mobile and default state
+
+// @include gridle_apply_css_for(grid, (
+// 	content : "i m a cool mobile grid"
+// ), tablet);
+
+
+// you can extend the base classes of the framework by using this mixin
+// here, all the grid and flex-grid elements will be extended with the specified
+// css map
+
+// @include gridle_extend_base_class(grid flex-grid, (
+// 	content : "i extend the grid class"
+// ));
+
+// in order to extend only certain states classes, you can specify states like this
+// this will have the effect to apply the css map only on grid-mobile... and grid-tablet... classes
+// @include gridle_extend_base_class(grid, (
+// 	content : "i extend the grid class"
+// ), mobile tablet);

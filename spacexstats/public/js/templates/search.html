@@ -1,0 +1,56 @@
+<div class="search" id="search">
+
+    <div class="search-controls container">
+        <div class="search-control gr-9 gr-7@medium gr-6@small">
+            <input class="search" type="search" ng-model="currentSearch.rawQuery" ng-change="onSearchChange($event)" placeholder="Search Mission Control" class="gr-8" />
+        </div>
+        <div class="search-control gr-2 gr-3@medium gr-4@small">
+            <button class="search submit wide-button" ng-click="search()" ng-disabled="currentSearch.rawQuery == null || currentSearch.rawQuery == ''"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="search-control gr-1 gr-2@medium gr-2@small">
+            <button class="reset warning wide-button" ng-click="reset()" ng-disabled="currentSearch.rawQuery == null || currentSearch.rawQuery == ''"><i class="fa fa-close"></i></button>
+        </div>
+    </div>
+
+	<div class="filters container">
+		<dropdown class="gr-3 gr-12@small filter missions" ng-change="onFilterUpdate('mission')" searchable="true" options="data.missions" unique-key="mission_id" title-key="name" has-default-option="false"
+                  ng-model="brokerFilters.mission" placeholder="Filter by Mission"></dropdown>
+
+        <dropdown class="gr-3 gr-12@small filter types" options="data.types" unique-key="name" title-key="name" has-default-option="false"
+        ng-model="brokerFilters.type" ng-change="onFilterUpdate('type')" placeholder="Filter by submission type"></dropdown>
+
+        <div class="gr-2 filter after">
+            <datepicker date-format="MMM d, yyyy">
+                <input date-typer="true" ng-model="brokerFilters.after" ng-change="onFilterUpdate('after')" type="text" placeholder="After this" />
+            </datepicker>
+        </div>
+
+        <div class="gr-2 filter after">
+            <datepicker date-format="MMM d, yyyy">
+                <input date-typer="true" ng-model="brokerFilters.before" ng-change="onFilterUpdate('before')" type="text" placeholder="Before this" />
+            </datepicker>
+        </div>
+
+        <div class="gr-2 gr-12@small filter user-centric">
+            <div class="dropdown">
+                <div class="more-filters selected-option default" ng-click="showMoreFilters = !showMoreFilters">
+                    <span class="name">More Filters...</span>
+                </div>
+                <ul class="more-filters dropdown" ng-show="showMoreFilters">
+                    <li>
+                        <input type="checkbox" name="favorited" id="favorited" ng-model="brokerFilters.favorited" ng-change="onFilterUpdate('favorited')" />
+                        <label for="favorited"><span>My Favorites</span></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="noted" id="noted" ng-model="brokerFilters.noted" ng-change="onFilterUpdate('noted')" />
+                        <label for="noted"><span>My Notes</span></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="downloaded" id="downloaded" ng-model="brokerFilters.downloaded" ng-change="onFilterUpdate('downloaded')" />
+                        <label for="downloaded"><span>My Downloads</span></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</div>
+</div>

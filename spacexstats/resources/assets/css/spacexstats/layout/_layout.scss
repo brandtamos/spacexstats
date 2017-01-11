@@ -1,0 +1,315 @@
+*, *:before, *:after {
+    box-sizing:border-box;
+}
+
+html {
+}
+
+html, body {
+    height:100%;
+    width:100%;
+    font-family:$notoSans;
+    background-color:$offwhite;
+}
+
+body {
+    overflow-x:hidden;
+    overflow-y:auto; // Was originally scroll, change it back if something breaks
+    position:relative;
+    left:0;
+    font-size:14px;
+}
+
+// Make sure the first element following the header wrapper is offset by 50px
+// to allow room for the navigation menu
+.header-wrapper + * {
+    padding-top:50px;
+}
+
+.content-wrapper {
+    width:100%;
+    min-height:100vh;
+    height:100%;
+    z-index:100;
+
+    &.single-page {
+        height:100vh;
+
+        main {
+            min-height:initial;
+            min-height:auto;
+            height:calc(100% - #{$h1-height} - 50px); // Height of h1 and nav substracted
+
+            @include gridle_state('small') {
+                height:calc(100% - #{$h1-height-small} - 50px); // Height of h1 and nav substracted
+            }
+        }
+    }
+
+    &.background {
+        background-size:cover;
+        background-position:center center;
+
+        main {
+            background-color:rgba($white, 0.75);
+
+            &.invert {
+                background-color:rgba($slateblack, 0.8);
+            }
+        }
+    }
+
+    &.transparent main {
+        background:none;
+        &:after {
+            display:none;
+        }
+    }
+}
+
+// CONTENT HOLDERS
+main, section, div, aside {
+    outline:0;
+}
+
+h1, main {
+    width:100%;
+    max-width:1400px;
+    margin:0 auto;
+    z-index:200;
+    position:relative;
+}
+
+main {
+    background-color:$white;
+
+    color:$slateblack;
+    min-height:calc(100% - #{$h1-height}); // Substract h1 height
+    display:block; // Make IE happy
+    padding-bottom:40px; // undo the effects of a position:sticky bar causing the sibling element to have a top of 40px
+
+    &.invert {
+        table, p {
+            color:$white;
+        }
+        color:$white;
+    }
+
+    // Allow for a border around main
+    &:after {
+        content:"";
+        position:absolute;
+        z-index:-1;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        border:3px solid rgba($slateblack, 0.2);
+    }
+}
+
+main > * {
+    padding:0 10px;
+}
+
+ul, ol {
+    list-style-type:none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:$brandonGrotesque;
+    font-weight:400;
+}
+
+h1 {
+    height:$h1-height;
+    color:$white;
+    line-height:$h1-height;
+    font-size:50px;
+    font-weight:lighter;
+    text-transform: none;
+    text-overflow: "...";
+    overflow: hidden;
+    white-space: nowrap;
+    text-shadow:0 0 5px $lightblack;
+
+    @include gridle_state('medium') {
+        font-size:42px;
+    }
+
+    @include gridle_state('small') {
+        line-height:$h1-height-small;
+        height:$h1-height-small;
+        font-size:32px;
+    }
+}
+
+h2 {
+    font-size:28px;
+    margin:20px 0 10px 0;
+    padding:0 10px;
+    border-bottom:1px solid $bordergrey;
+    clear:both;
+}
+
+h3 {
+    font-size:20px;
+    color:$october;
+    margin:20px 0 10px 0;
+}
+
+section {
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after { clear: both; }
+    zoom: 1; /* IE < 8 */
+}
+
+p {
+    line-height:1.5;
+    font-family:$notoSans;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-size:14px;
+    color:$lightblack;
+}
+
+// Borders
+.border-bottom {
+    border-bottom:1px solid $bordergrey;
+}
+
+// Text
+a:link, a:visited, a:hover, a:active {
+    color:inherit;
+    text-decoration:inherit;
+    @include transitionFast(color);
+}
+
+span, p {
+    a:link, a:visited {
+        color:$october;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color:$gold;
+    }
+
+    a:active {
+        color:orange;
+    }
+}
+
+small {
+    font-size:smaller;
+    opacity:0.8;
+}
+
+.exclaim {
+    text-align:center;
+    font-size:32px;
+    font-family:$brandonGrotesque;
+    font-weight:100;
+    color:$grey;
+
+    @include gridle_state(small) {
+        font-size:24px;
+    }
+}
+
+.lowvisibility {
+    &.color {
+        color:$bordergrey;
+    }
+    &.opacity {
+        opacity:0.75;
+    }
+}
+
+.subheading {
+    font-size:$font-large;
+    line-height:2;
+}
+
+.gold {
+    color:$gold;
+}
+
+.red {
+    color:$red;
+}
+
+.green {
+    color:$green;
+}
+
+.white {
+    color:$offwhite;
+}
+
+.code {
+    font-family:$sourceCodePro;
+}
+
+.hidden {
+    display:none;
+}
+
+.fancy-heading {
+    position:relative;
+
+    span {
+        background-color:$white;
+        padding:0 20px;
+        position:relative;
+    }
+
+    &:before {
+        background: $bordergrey none repeat scroll 0% 0%;
+        content: "";
+        display: block;
+        height: 1px;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+    }
+}
+
+.text-center {
+    text-align:center;
+}
+
+// Tables
+table td, table th {
+    padding:5px;
+}
+
+table.data-table {
+    td, th {
+        border:1px solid $bordergrey;
+    }
+
+    th {
+        padding:10px;
+        font-weight:bold;
+        background-color:$october;
+        color:$offwhite;
+    }
+}
+
+// Blockquotes
+blockquote, .backing {
+    background-color:$offwhite;
+    padding:10px;
+    width:100%;
+}
+
+.cursor-pointer {
+    cursor:pointer;
+}

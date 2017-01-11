@@ -1,0 +1,20 @@
+.dataplot path {
+    stroke:$blue;
+}
+
+.chart-title {
+    font-family:$montserrat;
+    font-size:16px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: auto;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}

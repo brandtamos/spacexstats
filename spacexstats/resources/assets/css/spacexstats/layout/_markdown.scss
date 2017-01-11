@@ -1,0 +1,88 @@
+.md {
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family:$notoSans;
+        font-weight:500;
+        text-transform:initial;
+        color:$lightblack;
+        margin:10px 0;
+        padding:0;
+        line-height:1.2;
+        height:initial;
+        border:none;
+    }
+
+    h1 {
+        font-size:32px;
+    }
+
+    h2 {
+        font-size:28px;
+    }
+
+    h3 {
+        font-size:24px;
+    }
+
+    h4 {
+        font-size:20px;
+    }
+
+    h5 {
+        font-size:18px;
+    }
+
+    h6 {
+        font-size:16px;
+    }
+
+    em {
+        font-style:italic;
+    }
+
+    strong {
+        font-weight:bold;
+    }
+
+    p {
+        padding:0;
+        margin:10px 0;
+    }
+
+    ul, ol {
+        margin:10px 0;
+        list-style-position: inside;
+
+        ul {
+            list-style-type:circle;
+        }
+
+        ol {
+            list-style-type:lower-alpha;
+        }
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+
+    ol {
+        list-style-type:decimal;
+    }
+
+    table, th, td {
+        border:1px solid $bordergrey;
+    }
+
+    th {
+        font-weight:bold;
+    }
+
+    blockquote, blockquote > * {
+        font-style:italic;
+        font-size:larger;
+        font-family:$brandonGrotesque;
+        font-weight:400;
+        color:$lightblack;
+    }
+}

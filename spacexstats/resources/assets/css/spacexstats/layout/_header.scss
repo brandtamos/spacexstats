@@ -1,0 +1,97 @@
+.header-wrapper {
+    width:100%;
+    background-color:$blue;
+    height:500px;
+    position:absolute;
+    overflow: hidden;
+
+    &.no-background {
+        background-color:transparent;
+    }
+
+    &:before {
+        content:"";
+        background-size: cover;
+        filter:blur(2px);
+        position:absolute;
+        display:block;
+        width:102%;
+        height:504px;
+        top: -2px;
+        left: -1%;
+    }
+
+    header {
+        @include gridle_container();
+        max-width:1400px;
+        width:100%;
+        margin:0 auto;
+        font-family:$notoSans;
+        color:$white;
+        z-index:100;
+        line-height:50px;
+        height:50px;
+        text-align:center;
+
+        i {
+            @include gridle_hide();
+            @include gridle_state('small') {
+                @include gridle_grid(1);
+                @include gridle_show();
+            }
+            line-height:50px;
+            cursor:pointer;
+        }
+
+        a {
+            display:block;
+        }
+    }
+}
+
+#logo {
+    @include gridle_grid(1);
+    @include gridle_state('small') {
+        @include gridle_grid(10); // 10 because it balances with the hamburger menu (which takes up a space of 1) to the left
+    }
+    font-weight:800;
+    font-size:20px;
+    font-family:$brandonGrotesque;
+    color:$white !important;
+    text-decoration: none !important;
+    position:relative;
+}
+
+.mobile-hamburger {
+    position:relative;
+}
+
+.flash-message {
+    position: fixed;
+    z-index: 500;
+    max-width: 1000px;
+    margin: 0px auto;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    padding: 8px 10px;
+    border-radius:0 0 $border-radius-small $border-radius-small;
+    box-shadow:0 0 15px rgba($slateblack, 0.5);
+    color:$white;
+
+    &.success {
+        background-color:rgba($green, 0.9);
+
+        &:before {
+
+        }
+    }
+
+    &.failure {
+        background-color:rgba($red, 0.9);
+
+        &:before {
+
+        }
+    }
+}

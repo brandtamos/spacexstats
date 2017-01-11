@@ -1,0 +1,427 @@
+// General card styles
+.proportional {
+    width:100%;
+
+    // Aspect ratio to be defined by specific card
+    > div {
+        width:100%;
+        position:relative;
+    }
+
+    .content {
+        position:absolute;
+        top:0;
+        right:0;
+        left:0;
+        bottom:0;
+        overflow:hidden;
+
+        > * {
+            position:relative;
+        }
+    }
+}
+
+@mixin card-statistic() {
+    font-weight:100;
+    font-size:80px;
+    color:white;
+}
+
+@mixin card-description() {
+    font-size:50px;
+    text-transform: uppercase;
+    color:$offwhite;
+}
+
+// Mission Card
+.mission-card {
+    width:100%;
+    position:relative;
+    margin-top:30px;
+    background-color:$offwhite;
+    border: 3px solid rgba($slateblack,0.2);
+    border-left:none;
+    border-right:none;
+    width:calc(100% + 20px);
+    left:-10px;
+
+    .top {
+        padding:10px;
+        padding-left:130px;
+        height:80px;
+        color:$grey;
+        font-family:$segoeWP;
+
+        .thumb {
+            background-size:cover;
+            background-position:center center;
+            border-radius:$border-radius-large;
+            width:100px;
+            height:100px;
+            position:absolute;
+            top:-20px;
+            left:20px;
+            display: inline-block;
+        }
+
+        .mission-name {
+            font-family:$brandonGrotesque;
+            font-size:40px;
+            text-transform:initial;
+            color:$lightblack !important;
+            text-decoration: none !important;
+        }
+
+        .for {
+            padding:0 5px;
+            font-size:14px;
+        }
+
+        .mission-contractor {
+            font-size:18px;
+        }
+    }
+
+    .bottom {
+        padding:10px;
+        text-align:center;
+        vertical-align: middle;
+
+        .keys {
+            font-family:$montserrat;
+        }
+
+        .keys, .values {
+            @include gridle_state(small) {
+                @include gridle_grid(6);
+            }
+
+            > div {
+                @include gridle_grid('1on9');
+
+                @include gridle_state(small) {
+                    @include gridle_grid(12);
+                    height:100px;
+                }
+            }
+        }
+
+        .launch-count {
+            width:50px;
+            height:50px;
+            border-radius:50%; // Make it circular
+            background-color:$blue;
+            display:block;
+            color:$white;
+            line-height:50px;
+            text-align: center;
+            margin:0 auto;
+        }
+
+        .launch-illumination, .mission-collection, .where-to-watch {
+            width:48px;
+            height:48px;
+        }
+    }
+}
+
+// Object Card
+.object-card {
+    margin:20px 0;
+    height:100px;
+    position:relative;
+    background-color:$offwhite;
+    z-index:1;
+
+    div {
+        display:inline-block;
+    }
+
+    .thumb-holder {
+        width:100px;
+        height:100px;
+        background-color:$offwhite;
+        margin-right:5px;
+        position:relative;
+
+        img.thumb {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+        }
+    }
+
+    .object-overview {
+        height:100px;
+        vertical-align: top;
+        padding:5px;
+        position:relative;
+        width:calc(100% - 110px);
+
+        .title {
+            font-size:20px;
+            padding:0;
+            font-family:$brandonGrotesque;
+        }
+
+        .type.creator.date, .comments {
+            font-size:small;
+            padding:5px 0;
+        }
+
+        .tags {
+            position:absolute;
+            right:0;
+            bottom:0;
+        }
+    }
+
+    .publication-status {
+        position:absolute;
+        right:0;
+        top:0;
+        color:white;
+        padding:5px;
+        opacity:0.5;
+        cursor:pointer;
+
+        &:after {
+            content:"";
+            border-left:40px solid transparent;
+            width:0;
+            height:0;
+            position:absolute;
+            top:0;
+            right:-1px; // no one knows why
+            font-size:0;
+            z-index:-1;
+        }
+
+        &.published:after {
+            border-top:40px solid $green;
+        }
+
+        &.queued:after {
+            border-top:40px solid $gold;
+        }
+    }
+}
+
+// Flight Profile Card
+.flight-profile-card {
+
+    > div {
+        padding-top:66.7%; // 3:2
+    }
+
+    .content {
+        .status {
+            top:20px;
+            left:20px;
+        }
+
+        table.countdown {
+            margin: 0px auto;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.3);
+
+            td {
+                min-width: 120px;
+
+                &.value {
+                    font-size:80px;
+                }
+
+                &.unit {
+                    font-size:20px;
+                }
+            }
+        }
+    }
+}
+
+// Spacecraft Card
+.spacecraft-card {
+
+    > div {
+        padding-top:50%; // 2:1
+    }
+
+    .content {
+        text-align:center;
+        color:$white;
+        font-family:$brandonGrotesque;
+        background-color:rgba($lightblack, 0.3);
+        padding:20px;
+
+        &:before {
+            // Place the background image here instead so we can blur it
+            background-image:url('/images/cards/dragon.jpg');
+            background-size:cover;
+            filter:blur(2px);
+            content:"";
+            width:102%;
+            height:102%;
+            display:block;
+            position:absolute;
+            top: -1%;
+            left: -1%;
+            z-index:-1;
+        }
+    }
+
+    .time-in-space {
+        p {
+            padding:0;
+        }
+
+        p:first-child {
+            @include card-statistic();
+        }
+
+        p:last-child {
+            @include card-description();
+            font-size:30px;
+        }
+    }
+
+    .cargo {
+        display:inline-block;
+        width:50%;
+        font-size:36px;
+        padding:20px 0;
+
+        &.upmass {
+            text-align: right;
+            float:left
+        }
+
+        &.downmass {
+            text-align: left;
+            float:right;
+        }
+
+        .unit {
+            text-transform: uppercase;
+            font-size:20px;
+        }
+    }
+}
+
+// Payloads Card
+.payloads-card {
+
+    > div {
+        padding-top:100% / (16 / 9); // 16:9 aspect ratio
+    }
+
+    .content {
+        font-family:$brandonGrotesque;
+        color:$white;
+        background-color:rgba($lightblack, 0.3);
+        padding:20px;
+
+        &:before {
+            // Place the background image here instead so we can blur it
+            background-image:url('/images/cards/glorysatellite.jpg');
+            background-size:cover;
+            filter:blur(3px);
+            content:"";
+            width:102%;
+            height:102%;
+            display:block;
+            position:absolute;
+            top: -1%;
+            left: -1%;
+            z-index:-1;
+        }
+    }
+
+    table {
+        table-layout: fixed;
+        width:100%;
+        text-align: center;
+
+        tr.values td p {
+            @include card-statistic();
+        }
+
+        tr.units td p {
+            @include card-description();
+            font-size:20px !important;
+        }
+    }
+
+    .weights {
+        overflow:hidden;
+        font-size:0;
+
+        img {
+            height:100px;
+            padding:0 10px;
+
+            @for $i from 0 through 10 {
+                &.clipped-#{$i} {
+                    position:relative;
+                    top:(10 - $i) * 10px;
+                }
+            }
+        }
+    }
+
+    .satellites {
+        font-size: 16px;
+        background-color: rgba($lightblack, 0.5);
+        position: absolute;
+        padding: 20px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+
+        a:link, a:visited {
+            color:$blue;
+        }
+    }
+}
+
+// Upper stage Card
+.upper-stage-card {
+
+    > div {
+        padding-top:100% / (16 / 9); // 16:9 aspect ratio
+    }
+
+    .content {
+        font-family:$brandonGrotesque;
+        color:$white;
+
+        &:before {
+            // Place the background image here instead so we can blur it
+            background-image:url('/images/cards/earth.jpg');
+            background-size:cover;
+            filter:blur(5px);
+            content:"";
+            width:102%;
+            height:102%;
+            display:block;
+            position:absolute;
+            top: -1%;
+            left: -1%;
+        }
+    }
+
+    p:first-child {
+        @include card-statistic();
+    }
+
+    p:last-child {
+        @include card-description();
+    }
+}

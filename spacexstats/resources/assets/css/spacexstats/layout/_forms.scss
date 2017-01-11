@@ -1,0 +1,384 @@
+main > form {
+    padding:5px;
+}
+
+form {
+   ul li  {
+       padding:10px !important;
+   }
+
+    label, .label {
+        font-size:14px;
+        color:$lightblack;
+        text-transform: uppercase;
+        font-weight:400;
+        font-family:$segoeWP;
+        line-height: 2;
+    }
+
+    input, textarea {
+        width:100%;
+        padding:5px;
+        border:1px solid $bordergrey;
+        font-family:$notoSans;
+        font-size:14px;
+        box-shadow:0 0 0 rgba($october, 0.2);
+        border-radius:0;
+
+        @include transitionFast(border);
+        @include transitionFast(box-shadow);
+
+        &.invalid, &.ng-invalid.ng-touched {
+            border:1px solid $red;
+        }
+
+        &:focus {
+            border: 1px solid $gold;
+            box-shadow: 0 0 5px rgba($october, 0.2);
+        }
+
+        &.prepended-input {
+            padding-left:32px;
+            background-repeat:no-repeat;
+
+            &.twitter {
+                background-image:url("/images/icons/prepended-twitter.png");
+            }
+
+            &.reddit {
+                background-image:url("/images/icons/prepended-reddit.png");
+            }
+        }
+
+        // Remove iOS styling
+        -webkit-appearance: none;
+    }
+
+    select {
+        padding:5px;
+        border:1px solid $bordergrey;
+        text-transform: initial;
+        display:block;
+        height:32px;
+    }
+
+    textarea {
+        resize:vertical;
+        min-height:200px;
+
+        &.half {
+            min-height:100px;
+        }
+    }
+
+    // Checkbox styling from
+    // http://codepen.io/andreasstorm/pen/ZGjNwZ
+    input[type="checkbox"] {
+        display:none;
+        margin:10px;
+
+        + label {
+            position: relative;
+            display: block;
+            height: 20px;
+            width: 44px;
+            margin:10px;
+            padding:0;
+            background: #898989;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all .3s ease;
+
+            span {
+                position: relative;
+                left: 50px;
+                min-width: 400px;
+                display: block;
+                line-height: 1.5;
+            }
+
+            &:after {
+                position: absolute;
+                left: -2px;
+                top: -3px;
+                display: block;
+                width: 26px;
+                height: 26px;
+                border-radius: 100px;
+                background: $bordergrey;
+                box-shadow: 0px 3px 3px rgba(#000, .05);
+                content: '';
+                transition: all .3s ease;
+            }
+
+            &:active {
+                &:after {
+                    transform: scale(1.15, .85);
+                }
+            }
+        }
+
+        &:checked + label {
+            background:$blue;
+
+            &:after {
+                left:20px;
+                background:$october;
+            }
+        }
+
+        &:disabled + label {
+            background:#D5D5D5;
+            pointer-events:none;
+
+            &:after {
+                background:#BCBDBC;
+            }
+        }
+    }
+
+    // Radio button styling
+    input[type="radio"] {
+        display:none;
+
+        + label {
+            display:inline-block;
+            width:20px;
+            height:20px;
+            position:relative;
+            border:2px solid $bordergrey;
+            border-radius:50%;
+            cursor: pointer;
+            transition: all .3s ease;
+            box-shadow: 0px 3px 3px rgba(#000, .05);
+
+            span {
+                position: relative;
+                left: 25px;
+                min-width: 200px;
+                display: block;
+                line-height: 1;
+            }
+
+            &:after {
+                background-color:transparent;
+            }
+        }
+
+        &:checked + label {
+            border-color:$blue;
+
+            &:after {
+                content:"";
+                display:inline-block;
+                position:absolute;
+                border-radius:50%;
+                top:2px;
+                left:2px;
+                width:12px;
+                height:12px;
+                background-color:$october;
+                transition: all .3s ease;
+                box-shadow: 0px 3px 3px rgba(#000, .05);
+            }
+        }
+
+        &:disabled + label {
+            border-color:$bordergrey;
+        }
+
+        &:checked:disabled + label {
+            border-color:$bordergrey;
+        }
+
+    }
+
+    legend {
+        font-size:$font-large;
+        line-height:2;
+    }
+
+    // Password toggle
+    .password-toggle {
+        position:relative;
+
+        i {
+            right: 10px;
+            position: absolute;
+            height: 32px;
+            line-height: 32px;
+            cursor:pointer;
+            @include transitionFast('color');
+
+            &:hover {
+                color:$gold;
+            }
+        }
+    }
+
+}
+
+input[type="submit"], input[type="reset"], button, .button {
+    font-family:$montserrat;
+    font-size:16px;
+
+    height:32px;
+    line-height:32px;
+    min-width:150px;
+    padding:0 20px;
+    width:auto;
+    border-radius:2px;
+    border:none;
+    color:$offwhite;
+    cursor:pointer;
+    box-shadow:0;
+    margin-top:10px;
+    margin-bottom:10px;
+
+    // Remove iOS styling
+    -webkit-appearance: none;
+
+    // Other buttons
+    background-color:$spacesuitgreen;
+
+    // Submission buttons
+    &.submit {
+        background-color:$blue;
+    }
+
+    &.warning {
+        background-color:$red;
+    }
+
+    &.wide-button {
+        width:100%;
+        display:block;
+    }
+
+    &.icon-button {
+        width:100px;
+        height:100px;
+
+        img {
+            text-align:center;
+        }
+    }
+
+    // Disabled buttons
+    &[disabled], &.disabled {
+        background-color:$bordergrey;
+        cursor:auto;
+    }
+
+    &:focus {
+        border:none;
+        box-shadow: none;
+    }
+}
+
+input[type="reset"] {
+    min-width:50px;
+}
+
+input[value="Logout"], input[value="Logout"]:focus {
+    background-color:transparent;
+    outline:none;
+    cursor:pointer;
+    border:none !important;
+    font-family:$notoSans;
+    font-size: 100%;
+    letter-spacing:normal;
+    text-transform:none;
+    color:$slateblack;
+    margin:0;
+    padding:0;
+    font-weight:normal;
+    box-shadow:none;
+    height:auto;
+    line-height:50px;
+}
+
+// http://stackoverflow.com/questions/11064237/prevent-iphone-from-zooming-form
+// Prevent iOS zooming in forms by scaling up the fontsize
+@include gridle_state('small') {
+    input, select, textarea {
+        font-size: 16px;
+    }
+}
+
+// Username checker styles
+.username-checker-hidden {
+    @include transitionFast(all);
+    opacity:0;
+}
+
+.username-checker-hidden.username-checker-hidden-active {
+    opacity:1;
+}
+
+.username-checker-visible {
+    @include transitionFast(all, 0.3s);
+    opacity:1;
+}
+
+.username-checker-visible.username-checker-visible-active {
+    opacity:0;
+}
+
+// Segmented controls
+.segmented-control {
+    text-align:center;
+    font-family: $montserrat;
+    padding:10px 0;
+
+    ul {
+        user-select:none;
+        display: inline-block;
+        text-align: center;
+        border-collapse: collapse;
+        border:1px solid $blue;
+        border-radius:$border-radius-small;
+        height:30px;
+        font-size:0;
+        vertical-align: top;
+
+        li {
+            width:100px;
+            display:inline-block;
+            position:relative;
+            padding:5px;
+            height:28px;
+            color:$slateblack;
+            font-size:12px;
+            line-height:20px;
+            vertical-align:top;
+
+            text-decoration: none;
+            text-shadow: none;
+            @include transitionMed(text-shadow);
+
+            &:not(:last-child) {
+                border-right:1px solid $blue;
+            }
+
+            &:active, &.selected {
+                background-color:$blue;
+                color:white;
+            }
+
+            &:active {
+                box-shadow:inset 0 1px 4px $october,
+                inset 0 0 5px $october;
+            }
+
+            &:hover {
+                text-shadow: -1px 1px 3px #ffc, 1px -1px 8px white;
+            }
+
+            span {
+                position:relative;
+                top:0;
+            }
+        }
+    }
+}

@@ -1,0 +1,69 @@
+#missioncontrol > div {
+    @include gridle_gutter(0px 20px);
+}
+
+.missioncontrol-views {
+    background-color:rgba($october, 0.2);
+    margin-top:-10px;
+    height: 40px;
+    line-height: 40px;
+    font-family:$montserrat;
+    text-align: center;
+}
+
+// MISSIONCONTROL ABOUT PAGE
+.missioncontrol-about {
+
+    .content-wrapper {
+        p, span, ul {
+            color:$white;
+            font-family: $brandonGrotesque;
+        }
+    }
+
+    .background {
+        background-image:url('/images/backgrounds/fh-launch.jpg');
+    }
+
+    h1 {
+        line-height:100px;
+        height:100px;
+    }
+
+    p {
+        font-size:24px;
+    }
+
+    #herovideo {
+        position: absolute;
+        top: 0;
+    }
+
+    @media all and (min-aspect-ratio: 16/9) {
+        #herovideo {
+            width:100%;
+            height:auto;
+        }
+    }
+
+    @media all and (max-aspect-ratio: 16/9) {
+        #herovideo {
+            width:auto;
+            height:100%;
+        }
+    }
+
+    // Individual page styles
+    .notifications {
+        background-image:url('/images/backgrounds/fh-launch.jpg');
+
+        p {
+            background-color:rgba($slateblack, 0.8);
+        }
+
+        img {
+            float:right;
+            max-width:500px;
+        }
+    }
+}

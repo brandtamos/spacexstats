@@ -1,0 +1,71 @@
+body.object {
+
+    .content {
+        margin-left:-10px;
+
+        #object-container {
+            text-align:center;
+
+            img {
+                max-width:100%;
+            }
+        }
+    }
+
+    .aside {
+        margin-left:10px;
+        padding-top:10px;
+        position: relative;
+        top:-$nav-height;
+    }
+}
+
+.object-actions {
+    text-align:center;
+    font-family: $montserrat;
+
+    i {
+        color:$october;
+        cursor:pointer;
+        display:block;
+        padding:5px;
+    }
+
+    .is-favorited {
+        color:$gold;
+    }
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; // 16/9
+    height: 0;
+    overflow: hidden;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.video-js {
+    width:auto !important;
+    height:auto !important;
+    padding-top:56.25% !important; // 16:9 http://coolestguidesontheplanet.com/videodrome/videojs/
+
+    &.audio {
+        padding-top:0px !important;
+        height:100px !important;
+    }
+}
+
+.vjs-fullscreen {
+    padding-top:0% !important;
+}
+
+#summary {
+    margin-left:10px;
+}

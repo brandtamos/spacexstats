@@ -1,0 +1,34 @@
+.profile {
+    .interactions {
+        img {
+            width:64px;
+            height:64px;
+            margin:0 10px;
+        }
+    }
+
+    #overview > div {
+        @include gridle_gutter(0 10px);
+    }
+
+    .about-this-user,  {
+        td:first-child {
+            color:$grey;
+            text-align:right;
+        }
+
+        td:last-child {
+
+        }
+    }
+
+    .user-stats {
+        td {
+            width:50%;
+        }
+    }
+}
+
+.profile #overview table {
+    width:100%;
+}

@@ -1,0 +1,150 @@
+$nav-height: 50px;
+
+header > nav {
+    @include gridle_state(small) {
+        width:250px;
+        height:100%;
+        position:fixed;
+        top:0;
+        left:-250px;
+        background-color:$lightblack;
+        text-align:left;
+    }
+
+    @include gridle(9);
+    @include gridle(10, large);
+    @include gridle(11, xlarge);
+    height:100%;
+
+    ul {
+        cursor:pointer;
+    }
+
+    > ul > li {
+        position:relative;
+    }
+
+    li > ul.nav-second-tier {
+        display:none;
+    }
+
+    li:hover {
+        background-color:rgba($white,0.1);
+    }
+
+    li:hover > ul.nav-second-tier, li > ul.nav-second-tier:hover {
+        display:block;
+        background-color:$white;
+        color:$slateblack;
+        z-index:300;
+        position:relative;
+        box-shadow:10px 10px 15px rgba($lightblack, 0.2);
+
+        @include gridle_state('small') {
+            color:$white;
+            background-color:lighten($slateblack, 10%);
+        }
+
+        &.wide {
+            width:250%;
+
+            @include gridle_state('small') {
+                width:100%;
+            }
+        }
+
+    }
+
+    ul.nav-second-tier li:hover {
+        background-color:rgba($blue, 0.1);
+    }
+}
+
+body, nav {
+    @include transitionMed(left);
+}
+
+/* MOBILE NAVIGATION */
+.nav-open {
+    left:250px;
+
+    nav {
+        left:0;
+    }
+}
+
+/* IN PAGE NAVIGATION */
+.in-page {
+    text-align:center;
+    height:$nav-height; // Includes the 10px padding of the parent element
+    line-height:$nav-height;
+    font-family: $montserrat;
+
+    > ul > li {
+        height:$nav-height;
+        cursor:pointer;
+        padding-bottom: 3px;
+
+        @include gridle_state('small') {
+            display:none;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            margin: auto;
+            height: 3px;
+            width: 0px;
+            background: transparent;
+            transition: width .5s ease, background-color .5s ease;
+        }
+
+        &.active:after {
+            width: 100%;
+            background:$gold;
+        }
+    }
+}
+
+/* Sticky Bar Nav */
+nav.sticky-bar {
+    top:0; // tell the element where to stick
+    width:inherit;
+    max-width:1400px;
+    font-size:14px;
+    @include transitionMed((background-color, color));
+
+    &.sticky {
+        background-color:$blue;
+        color:$white;
+        z-index:1000;
+    }
+}
+
+.sticky ~ * {
+    top:40px;
+    position:relative;
+}
+
+.highlights {
+    height:40px;
+    width:100%;
+    position:relative;
+}
+
+.actions {
+    font-size:16px;
+
+    & > div {
+        display:inline-block;
+        position:relative;
+
+        a {
+            padding:0 5px;
+
+            &:hover {
+                color:$gold;
+            }
+        }
+    }
+}
