@@ -2609,9 +2609,9 @@
                 };
 
                 $scope.displayDateTime = function() {
-                    if ($scope.isHoveringOverAlert) {
-                        return 'This launch has no time yet';
-                    }
+                    //if ($scope.isHoveringOverAlert) {
+                    //    return 'This launch has no time yets';
+                    //}
                     if ($scope.launchSpecificity >= 6) {
                         return $filter('date')(moment.utc($scope.launchDateTime, 'YYYY-MM-DD HH:mm:ss').toDate(), $scope.currentFormat, $scope.currentTimezone);
                     } else {

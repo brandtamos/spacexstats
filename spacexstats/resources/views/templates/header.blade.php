@@ -23,9 +23,9 @@
 			<a id="logo" href="/">SpaceX Stats</a>
 			<nav>
 				<ul>
-                    <li class="gr-1on8 gr-12@small">
+                    <!--<li class="gr-1on8 gr-12@small">
                         <a href="/live">Live</a>
-                    </li>
+                    </li>-->
 					<li class="gr-1on8 gr-12@small">
                         <a href="/missions/past">Past Missions</a>
 						<ul class="nav-second-tier wide">
@@ -69,7 +69,7 @@
                                 <li><a href="/missioncontrol/review">Review</a></li>
                             @endif
 						</ul>
-					</li>-->
+					</li>
 					<li class="gr-1on8 gr-12@small push-3 push-0@small">
 						@if (Auth::check())
                             <a href="/users/{{ Auth::user()->username }}">{{ Auth::user()->username }}</a>
@@ -92,7 +92,7 @@
 							</ul>
 						@endif
 						</ul>
-					</li>
+					</li>-->
 				</ul>
 			</nav>
 	</header>

@@ -19,6 +19,9 @@ A fan website for the company SpaceX originally created by Luke Davia ([Twitter]
 5. Now we need to seed the database. To do so, run this command: `php artisan migrate:refresh --seed`. You will get a few prompts asking if you're really sure about this, answer yes to all.
 6. If all went well, you should now be able to run the site. If you're already running IIS or Apache, you can access the site locally like you would access any normal site. If not, you can run the command `php artisan serve` to spin up a local server on port 8000.
 
+##### Useful commands
+'php artisan cache:clear` - clears the laravel cache, useful after db changes that you want to see reflected immediately. May affect site performance as cache is rebuilt.
+
 ## License
 <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" />
 
