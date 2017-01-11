@@ -1,7 +1,6 @@
 # SpaceX Stats
 A fan website for the company SpaceX originally created by Luke Davia ([Twitter](https://twitter.com/lukealization), [Reddit](https://reddit.com/u/EchoLogic)).
 
-# SpaceX Stats
 ### Setup How-to
 ##### Prereqs
 - PHP 5.3 or above
@@ -15,8 +14,8 @@ A fan website for the company SpaceX originally created by Luke Davia ([Twitter]
 2. Open command prompt and navigate to the code folder. run the command `composer install`. This will install all dependecies listed in the composer.json file.
 3. Make a copy of the ".env.example" file and name it ".env". This file handles some config values.
 4. In the .env file:
-..* set your MySQL connection info (host, username, password). 
-..* set your Redis host and port (in the case of a local redis install, you can use 127.0.0.1 and port 6379).
+  * set your MySQL connection info (host, username, password). 
+  * set your Redis host and port (in the case of a local redis install, you can use 127.0.0.1 and port 6379).
 5. Now we need to seed the database. To do so, run this command: `php artisan migrate:refresh --seed`. You will get a few prompts asking if you're really sure about this, answer yes to all.
 6. If all went well, you should now be able to run the site. If you're already running IIS or Apache, you can access the site locally like you would access any normal site. If not, you can run the command `php artisan serve` to spin up a local server on port 8000.
 
