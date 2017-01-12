@@ -11,8 +11,6 @@ put config
 put database
 put public
 put resources
-put storage
-put tests
 # Disconnect
 close
 # Exit WinSCP
