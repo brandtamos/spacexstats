@@ -8,6 +8,7 @@
 
 #sftp deployment script
 sftp_deploy.txt
+sftp_deploy_sync.txt
 WinSCP.ini
 
 #frontend app stuff

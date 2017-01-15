@@ -2,14 +2,14 @@
 A fan website for the company SpaceX originally created by Luke Davia ([Twitter](https://twitter.com/lukealization), [Reddit](https://reddit.com/u/EchoLogic)).
 
 ### Setup How-to
-##### Prereqs
+#### Prereqs
 - PHP 5.3 or above
 - MySQL server
 - Redis (if running locally, installation depends on your OS. Google is your friend)
 - Composer [installation instructions here](https://getcomposer.org/doc/00-intro.md)
 - Laravel [installation instructions here](https://laravel.com/docs/5.3/installation)
 
-##### Setup instructions
+#### Setup instructions
 1. Make sure all prereqs are installed / available. In the case of MySQL, just make sure you have access to a server if you don't have one installed locally.
 2. Open command prompt and navigate to the code folder. run the command `composer install`. This will install all dependecies listed in the composer.json file.
 3. Make a copy of the ".env.example" file and name it ".env". This file handles some config values.
@@ -19,8 +19,8 @@ A fan website for the company SpaceX originally created by Luke Davia ([Twitter]
 5. Now we need to seed the database. To do so, run this command: `php artisan migrate:refresh --seed`. You will get a few prompts asking if you're really sure about this, answer yes to all.
 6. If all went well, you should now be able to run the site. If you're already running IIS or Apache, you can access the site locally like you would access any normal site. If not, you can run the command `php artisan serve` to spin up a local server on port 8000.
 
-##### Deploying
-###### (only works from windows currently)
+#### Deploying
+(only works from windows currently)
 
 Deployment is done via SFTP using WinSCP.
 

@@ -2500,6 +2500,7 @@
                 }
 
                 $scope.isPaused = typeof $scope.isPaused !== 'undefined' ? $scope.isPaused : false;
+				$scope.isPaused = $scope.isPaused == "0" ? false : $scope.isPaused;
                 $scope.isVisibleWhenPaused = typeof $scope.isVisibleWhenPaused !== 'undefined' ? $scope.isVisibleWhenPaused : false;
 
                 $scope.isLaunchExact = angular.isUndefined($scope.specificity) || $scope.specificity == 6 || $scope.specificity == 7;
@@ -2574,9 +2575,11 @@
 
                 // Set the format to be displayed based on the launch specificity
                 switch ($scope.launchSpecificity) {
+					case "6":
                     case 6:
                         $scope.currentFormat = 'MMMM d, yyyy';
                         break;
+					case "7":
                     case 7:
                         $scope.currentFormat = 'h:mm:ssa MMMM d, yyyy';
                         break;
