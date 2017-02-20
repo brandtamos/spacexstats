@@ -29,7 +29,7 @@ Deployment is done via SFTP using WinSCP.
 
 
 ##### Useful commands
-'php artisan cache:clear` - clears the laravel cache, useful after db changes that you want to see reflected immediately. May affect site performance as cache is rebuilt.
+`php artisan cache:clear` or on linux `php artisan cache:clear` - clears the laravel cache, useful after db changes that you want to see reflected immediately. May affect site performance as cache is rebuilt.
 
 ## License
 <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" />
